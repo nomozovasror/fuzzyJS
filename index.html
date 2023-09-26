@@ -35,6 +35,15 @@
                 justify-content: center;
                 align-items: center;
             }
+            #math-equation{
+                display: inline-block !important;
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5rem;
+                padding: 30px 10px;
+            }
             .chart_res {
                 display: inline-block !important;
                 width: auto;
@@ -46,27 +55,10 @@
                 border-radius: 4px;
                 font-weight: 600;
             }
-            .drop {
-                margin-right: 10px;
-                width: 40px;
-                font-size: 1.2rem;
-                font-weight: 600;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .span_1{
-                position: relative;
-            }
-
-            .span_1::after {
-                position: absolute;
-                left: -5px;
-                content: "";
-                width: 40px;
-                height: 1px;
-                background-color: rgb(1, 0, 0);
+            .math-scrool{
+                width: 100%;
+                overflow-x: scroll;
+                padding: 10px 30px;
             }
         </style>
     <body>
@@ -232,7 +224,7 @@
                 </div>
           
                 <div class="box">
-                  <div id="math-equation">
+                  <div id="math-equation1">
                     \begin{equation} \mu_{\varepsilon}=\mu_1 \cup \mu_2 \cup \mu_3 \cup
                     \mu_4 \cup \mu_5 \cup \mu_6 \cup \mu_7 \end{equation}
                   </div>
@@ -242,16 +234,10 @@
                       \mu_{\varepsilon}(\omega) d \omega}{\int_{\Omega}
                       \mu_{\varepsilon}(\omega) d \omega} =  \end{equation}
                     </div>
-                    <div class="drop">
-                        <div class="span_1"></div>
-                        <div class="span_2"></div>
-                    </div>
-                    <div id="math-equation2" style="display: inline-block;">
-                        \begin{equation} =  \end{equation}
-                      </div>
                     <div class="chart_res pb-1"></div>
                   </div>
                 </div>
+                <div id="math-equation" class="math-equation math-scrool"></div>
               </div>
         </div>
         <script>
@@ -407,17 +393,65 @@
                     p += total[i] * x[i];
                 }
                 result = p / s;
-                console.log(result);
                 var equationSpan = document.querySelector(".chart_res");
                 equationSpan.innerHTML = result.toFixed(2);
-                document.querySelector(".span_1").innerHTML = p.toFixed(0);
-                document.querySelector(".span_2").innerHTML = s.toFixed(0);
                 return {
                     total: total,
                     result: result,
                 };
             }
 
+            function updateAll(xs) {
+                var p1 = normal(qwerty(q1, xs[0]), xs[0]);
+                var p2 = normal(qwerty(q2, xs[1]), xs[1]);
+                var p3 = normal(qwerty(q3, xs[2]), xs[2]);
+                var p4 = normal(qwerty(q4, xs[3]), xs[3]);
+                var p5 = normal(qwerty(q5, xs[4]), xs[4]);
+                var p6 = normal(qwerty(q6, xs[5]), xs[5]);
+                var p7 = normal(qwerty(q7, xs[6]), xs[6]);
+
+                var all_data = [p1, p2, p3, p4, p5, p6, p7];
+
+                var total_fuzzy_set = all_data[0].map((_, i) =>
+                    Math.max(
+                    p1[i],
+                    p2[i],
+                    p3[i],
+                    p4[i],
+                    p5[i],
+                    p6[i],
+                    p7[i]
+                    )
+                );
+
+                var s = 0;
+                    var p = 0;
+                    var result_all = 0;
+                    for (var i = 0; i < 101; i++) {
+                        s += total_fuzzy_set[i] * i;
+                        p += total_fuzzy_set[i];
+                    }
+                    result_all = s / p;
+
+                var equationDiv = document.querySelector(".math-equation");
+                var equation = "\\(\\frac{";
+                for (var i = 0; i <= total_fuzzy_set.length - 1; i++) {
+                    equation += +total_fuzzy_set[i] + " \\cdot " + i;
+                    if (i < total_fuzzy_set.length - 1) {
+                    equation += " + ";
+                    }
+                }
+                equation += "}{";
+                    for (var i = 0; i <= total_fuzzy_set.length - 1; i++) {
+                        equation += total_fuzzy_set[i];
+                        if (i < total_fuzzy_set.length - 1) {
+                        equation += " + ";
+                        }
+                    }
+                    equation += "} = " + result_all + "\\)";
+                    equationDiv.innerHTML = equation;
+                    MathJax.typesetPromise();
+                }
 
             class ChartComponent {
                 constructor(canvasId) {
@@ -632,34 +666,39 @@
                 }, 300);
             }
             x_val = [5, 5, 5, 5, 5, 5, 5];
-            
+
             document.getElementById("inputNumber1").addEventListener("input", function(){
                 x_val[0] = parseFloat(document.getElementById("inputNumber7").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
                 update("inputNumber1",".output_1", "norm_val_1", "text_1", "range_value_1", q1, dragChart_1);
             });
             document.getElementById("inputNumber2").addEventListener("input", function(){
                 x_val[1] = parseFloat(document.getElementById("inputNumber2").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
                 update("inputNumber2",".output_2", "norm_val_2", "text_2", "range_value_2", q2, dragChart_2);
             });
             document.getElementById("inputNumber3").addEventListener("input", function(){
                 x_val[2] = parseFloat(document.getElementById("inputNumber3").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
                 update("inputNumber3",".output_3", "norm_val_3", "text_3", "range_value_3", q3, dragChart_3);
             });
             document.getElementById("inputNumber4").addEventListener("input", function(){
                 x_val[3] = parseFloat(document.getElementById("inputNumber4").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
                 update("inputNumber4",".output_4", "norm_val_4", "text_4", "range_value_4", q4, dragChart_4);
             });
             document.getElementById("inputNumber5").addEventListener("input", function(){
                 x_val[4] = parseFloat(document.getElementById("inputNumber5").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
                 update("inputNumber5",".output_5", "norm_val_5", "text_5", "range_value_5", q5, dragChart_5);
             });
@@ -667,12 +706,14 @@
                 update("inputNumber6",".output_6", "norm_val_6", "text_6", "range_value_6", q6, dragChart_6);
                 x_val[5] = parseFloat(document.getElementById("inputNumber6").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
                 chart_result.update();
             });
             document.getElementById("inputNumber7").addEventListener("input", function(){
                 x_val[6] = parseFloat(document.getElementById("inputNumber7").value);
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 chart_result.update();
+                updateAll(x_val);
                 update("inputNumber7",".output_7", "norm_val_7", "text_7", "range_value_7", q7, dragChart_7);
             });
 
