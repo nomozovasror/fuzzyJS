@@ -63,12 +63,15 @@
         </style>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col-6 mt-5">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>1. Domlani darsidan qoniqasizmi?</h3>
+                </div>
+                <div class="col-6">
                     <div style="height: 0.5rem;"></div>
                     <canvas id="myChart_1" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">Natija: x1: <span class="output_1 result">5</span> da <span id="norm_val_1" class="result">1</span> bilan <span id="text_1" class="result">o'rta</span> ga tegishli</p>
                     </div>
@@ -83,11 +86,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>2. Domla darsni qanday olib boradi?</h3>
+                </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_2" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-4">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">Natija: x2: <span class="output_2 result">5</span> da <span id="norm_val_2" class="result">1</span> bilan <span id="text_2" class="result">o'rta</span> ga tegishli</p>
                     </div>
@@ -102,11 +108,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>3. Talabalar bilimini qay darajada baholaydi?</h3>
+                </div>
                 <div class="col-6 mt-4">
                     <canvas id="myChart_3" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-3">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">Natija: x3: <span class="output_3 result">5</span> da <span id="norm_val_3" class="result">1</span> bilan <span id="text_3" class="result">o'rta</span> ga tegishli</p>
                     </div>
@@ -121,11 +130,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>4. Darsdan tashqari paytda qoʼshimcha maʼlumot olganmisiz?</h3>
+                </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_4" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-4">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x1: 
@@ -144,11 +156,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>5. Domlaning ilmiy ishlari bilan tanishmisiz?</h3>
+                </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_5" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-4">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x1: 
@@ -167,11 +182,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>6. Domlaning muomila madaniyati, pedagogik imidji sizni qoniqtiradimi?</h3>
+                </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_6" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-4">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x1: 
@@ -190,11 +208,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>7. Talabalarning ushbu domlaga nisbatan munosabatini qanday baholaysiz?</h3>
+                </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_7" width="400"></canvas>
                 </div>
-                <div class="col-6 mt-5">
+                <div class="col-6 mt-4">
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x1: 
@@ -214,6 +235,7 @@
                 </div>
             </div>
             <div class="row">
+
                 <div class="col-12">
                     <canvas id="chart_result" width="400"></canvas>
                 </div>
@@ -409,10 +431,9 @@
                 var p5 = normal(qwerty(q5, xs[4]), xs[4]);
                 var p6 = normal(qwerty(q6, xs[5]), xs[5]);
                 var p7 = normal(qwerty(q7, xs[6]), xs[6]);
-
-                var all_data = [p1, p2, p3, p4, p5, p6, p7];
-
-                var total_fuzzy_set = all_data[0].map((_, i) =>
+                total = [];
+                var fuzzy_set = [p1, p2, p3, p4, p5, p6, p7];
+                var total = fuzzy_set[0].map((_, i) =>
                     Math.max(
                     p1[i],
                     p2[i],
@@ -423,28 +444,26 @@
                     p7[i]
                     )
                 );
-
-                var s = 0;
-                    var p = 0;
-                    var result_all = 0;
-                    for (var i = 0; i < 101; i++) {
-                        s += total_fuzzy_set[i] * i;
-                        p += total_fuzzy_set[i];
-                    }
-                    result_all = s / p;
-
+                let s = 0;
+                let p = 0;
+                let result = 0;
+                for (let i = 0; i <= 100; i++) {
+                    s += total[i];
+                    p += total[i] * x[i];
+                }
+                result_all = p / s;
                 var equationDiv = document.querySelector(".math-equation");
                 var equation = "\\(\\frac{";
-                for (var i = 0; i <= total_fuzzy_set.length - 1; i++) {
-                    equation += +total_fuzzy_set[i] + " \\cdot " + i;
-                    if (i < total_fuzzy_set.length - 1) {
+                for (var i = 0; i <= fuzzy_set.length - 1; i++) {
+                    equation += +fuzzy_set[i] + " \\cdot " + i;
+                    if (i < fuzzy_set.length - 1) {
                     equation += " + ";
                     }
                 }
                 equation += "}{";
-                    for (var i = 0; i <= total_fuzzy_set.length - 1; i++) {
-                        equation += total_fuzzy_set[i];
-                        if (i < total_fuzzy_set.length - 1) {
+                    for (var i = 0; i <= fuzzy_set.length - 1; i++) {
+                        equation += fuzzy_set[i];
+                        if (i < fuzzy_set.length - 1) {
                         equation += " + ";
                         }
                     }
