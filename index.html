@@ -422,6 +422,16 @@
                     result: result,
                 };
             }
+            function clear_zero(fuzz){
+                var clear_total = []
+                for (let i = 0; i < fuzz.length; i++) {
+                    if (fuzz[i] != 0) {
+                        clear_total.push(fuzz[i]);
+                    }
+                }
+                return clear_total;
+            }
+
 
             function updateAll(xs) {
                 var p1 = normal(qwerty(q1, xs[0]), xs[0]);
@@ -444,6 +454,8 @@
                     p7[i]
                     )
                 );
+
+                
                 let s = 0;
                 let p = 0;
                 let result = 0;
@@ -451,23 +463,26 @@
                     s += total[i];
                     p += total[i] * x[i];
                 }
+                total = clear_zero(total);
                 result_all = p / s;
                 var equationDiv = document.querySelector(".math-equation");
-                var equation = "\\(\\frac{";
-                for (var i = 0; i <= fuzzy_set.length - 1; i++) {
-                    equation += +fuzzy_set[i] + " \\cdot " + i;
-                    if (i < fuzzy_set.length - 1) {
-                    equation += " + ";
-                    }
-                }
-                equation += "}{";
-                    for (var i = 0; i <= fuzzy_set.length - 1; i++) {
-                        equation += fuzzy_set[i];
-                        if (i < fuzzy_set.length - 1) {
-                        equation += " + ";
+
+                    var equation = "\\(\\frac{";
+                    for (var i = 0; i <= total.length - 1; i++) {
+                        equation += "\(" + total[i].toFixed(2) + " \\cdot " + i + "\)" ;
+                        if (i < total.length-1) {
+                            equation += " + ";
                         }
                     }
-                    equation += "} = " + result_all + "\\)";
+                    equation += "}{";
+                    for (var i = 0; i <= total.length-1; i++) {
+                        equation += total[i].toFixed(2);
+                        if (i < total.length-1) {
+                            equation += " + ";
+                        }
+                    }
+            
+                    equation += "} = " + result_all.toFixed(2) +"\\)";
                     equationDiv.innerHTML = equation;
                     MathJax.typesetPromise();
                 }
