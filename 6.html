@@ -28,6 +28,20 @@
                 font-weight: 600;
                 color: rgb(241, 201, 59);
             }
+            .result-red {
+                font-size: 1.2rem;
+                padding: 0;
+                border-radius: 4px;
+                font-weight: 600;
+                color: rgb(243, 21, 89);
+            }
+            .result-blue {
+                font-size: 1.2rem;
+                padding: 0;
+                border-radius: 4px;
+                font-weight: 600;
+                color: rgb(117, 194, 246);
+            }
             #math-equation2 {
                 display: inline-block !important;
                 width: auto;
@@ -75,9 +89,12 @@
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x1: 
-                            <span class="output_1 result">5</span> da 
-                            <span id="norm_val_1" class="result">1</span> bilan 
-                            <span id="text_1" class="result">o'rta</span> ga tegishli
+                            <span class="output_1 result-blue">5</span> da 
+                            <span id="norm_val_1" class="result-blue">1.00</span> bilan 
+                            <span id="text_1" class="result-blue">Yaxshi</span> 
+                            <span id="n_norm_val_1" class="result-blue"></span> 
+                            <span id="hide_word_1" style="display: none;">bilan</span> 
+                            <span id="n_text_1" class="result-blue"></span> ga tegishli
                         </p>
                     </div>
                     
@@ -87,7 +104,7 @@
                             <span id="range_value_1" style="font-weight: 700; font-size: 1.2rem;">5</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber1" min="0" max="10" style="width: 100%" />
+                            <input type="number" id="inputNumber1" min="0" value="5" style="width: 100%" />
                         </div>
                     </div>
                 </div>
@@ -103,18 +120,21 @@
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x2: 
-                            <span class="output_2 result">5</span> da 
-                            <span id="norm_val_2" class="result">1</span> bilan 
-                            <span id="text_2" class="result">o'rta</span> ga tegishli
+                            <span class="output_2 result">1</span> da 
+                            <span id="norm_val_2" class="result">1.00</span> bilan 
+                            <span id="text_2" class="result">o'rta</span> 
+                            <span id="n_norm_val_2" class="result"></span> 
+                            <span id="hide_word_2" style="display: none;">bilan</span> 
+                            <span id="n_text_2" class="result"></span> ga tegishli
                         </p>
                     </div>
                     <canvas id="dragChart_2" width="400"></canvas>
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <span id="range_value_2" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                            <span id="range_value_2" style="font-weight: 700; font-size: 1.2rem;">1</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber2" min="0" max="10" style="width: 100%" />
+                            <input type="number" id="inputNumber2" min="0" value="1" style="width: 100%" />
                         </div>
                     </div>
                 </div>
@@ -130,25 +150,28 @@
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x3: 
-                            <span class="output_3 result">5</span> da 
-                            <span id="norm_val_3" class="result">1</span> bilan 
-                            <span id="text_3" class="result">o'rta</span> ga tegishli
+                            <span class="output_3 result-red">0</span> da 
+                            <span id="norm_val_3" class="result-red">1.00</span> bilan 
+                            <span id="text_3" class="result-red">o'rta</span> 
+                            <span id="n_norm_val_3" class="result-red"></span> 
+                            <span id="hide_word_3" style="display: none;">bilan</span> 
+                            <span id="n_text_3" class="result-red"></span> ga tegishli
                         </p>
                     </div>
                     <canvas id="dragChart_3" width="400"></canvas>
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <span id="range_value_3" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                            <span id="range_value_3" style="font-weight: 700; font-size: 1.2rem;">0</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber3" min="0" max="10" style="width: 100%" />
+                            <input type="number" id="inputNumber3" min="0" value="0" style="width: 100%" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <h3>4. Malaka oshirilganligi</h3>
+                    <h3>4. Malaka oshirganligi</h3>
                 </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_4" width="400"></canvas>
@@ -158,25 +181,32 @@
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             <p class="p-0 m-0" style="font-size: 1.2rem;">
                                 Natija: x4: 
-                                <span class="output_4 result">5</span> da 
-                                <span id="norm_val_4" class="result">1</span> bilan 
-                                <span id="text_4" class="result">o'rta</span> ga tegishli
+                                <span class="output_4 result">1</span> da 
+                                <span id="norm_val_4" class="result">1.00</span> bilan 
+                                <span id="text_4" class="result">o'rta</span> 
+                                <span id="n_norm_val_4" class="result"></span> 
+                                <span id="hide_word_4" style="display: none;">bilan</span> 
+                                <span id="n_text_4" class="result"></span> ga tegishli
                             </p>
                     </div>
                     <canvas id="dragChart_4" width="400"></canvas>
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <span id="range_value_4" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                            <span id="range_value_4" style="font-weight: 700; font-size: 1.2rem;">1</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber4" min="0" max="10" style="width: 100%" />
+                            <select id="inputNumber4" class="w-100">
+                                <option value="0">Yo'q</option>
+                                <option value="1" selected>Respublikada</option>
+                                <option value="2">Xorijda</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <h3>5. Elektron platformalarda joylashtirilgan ______ resurslari</h3>
+                    <h3>5. Elektron platformalarda joylashtirilgan media resurslari</h3>
                 </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_5" width="400"></canvas>
@@ -185,25 +215,28 @@
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x5: 
-                            <span class="output_5 result">5</span> da 
-                            <span id="norm_val_5" class="result">1</span> bilan 
-                            <span id="text_5" class="result">o'rta</span> ga tegishli
+                            <span class="output_5 result">10</span> da 
+                            <span id="norm_val_5" class="result">1.00</span> bilan 
+                            <span id="text_5" class="result">o'rta</span> 
+                            <span id="n_norm_val_5" class="result"></span> 
+                            <span id="hide_word_5" style="display: none;">bilan</span> 
+                            <span id="n_text_5" class="result"></span> ga tegishli
                         </p>
                     </div>
                     <canvas id="dragChart_5" width="400"></canvas>
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <span id="range_value_5" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                            <span id="range_value_5" style="font-weight: 700; font-size: 1.2rem;">10</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber5" min="0" max="10" style="width: 100%" />
+                            <input type="number" id="inputNumber5" min="0" value="10" style="width: 100%" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <h3>O'quv adabiyotlarini o'zga tillardan tarjima qilinganligi</h3>
+                    <h3>6. O'quv adabiyotlarini o'zga tillardan tarjima qilganligi</h3>
                 </div>
                 <div class="col-6 mt-5">
                     <canvas id="myChart_6" width="400"></canvas>
@@ -212,23 +245,25 @@
                     <div class="d-flex justify-content-center m-0 p-0">
                         <p class="p-0 m-0" style="font-size: 1.2rem;">
                             Natija: x6: 
-                            <span class="output_6 result">5</span> da 
-                            <span id="norm_val_6" class="result">1</span> bilan 
-                            <span id="text_6" class="result">o'rta</span> ga tegishli
+                            <span class="output_6 result">3</span> da 
+                            <span id="norm_val_6" class="result">1.00</span> bilan 
+                            <span id="text_6" class="result">o'rta</span> 
+                            <span id="n_norm_val_6" class="result"></span> 
+                            <span id="hide_word_6" style="display: none;">bilan</span> 
+                            <span id="n_text_6" class="result"></span> ga tegishli
                         </p>
                     </div>
                     <canvas id="dragChart_6" width="400"></canvas>
                     <div class="row">
                         <div class="col-1 d-flex align-items-center">
-                            <span id="range_value_6" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                            <span id="range_value_6" style="font-weight: 700; font-size: 1.2rem;">3</span>
                         </div>
                         <div class="col-11 d-flex align-items-center">
-                            <input type="range" id="inputNumber6" min="0" max="10" style="width: 100%" />
+                            <input type="number" id="inputNumber6" min="0" value="3" style="width: 100%" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
                 <div class="col-12">
                     <canvas id="chart_result" width="400"></canvas>
                 </div>
@@ -237,7 +272,6 @@
                 <div class="col-4 text-center">
                   <h4 id="result"></h4>
                 </div>
-          
                 <div class="box">
                   <div id="math-equation1">
                     \begin{equation} \mu_{\varepsilon}=\mu_1 \cup \mu_2 \cup \mu_3 \cup
@@ -252,15 +286,13 @@
                     <div class="chart_res pb-1"></div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-around">
-                    <div id="math-equation" class="math-equation"></div>
-                </div>
-            </div>
+                <div id="math-equation" class="math-equation math-scrool"></div>
+              </div>
         </div>
         <script>
             const x = [];
-            for (let i = 0; i <= 10; i++) {
-            x.push(i);
+            for (let i = 0; i <= 100; i++) {
+            x.push(i / 10);
             }
             function trapezoidalMF(a, b, c, d) {
             const array = [];
@@ -334,23 +366,34 @@
 
             function normal(F, z) {
                 const a = [];
-                for (let i = 0; i <= 10; i++) {
-                    if (F[z] > F[i]) {
+                for (let i = 0; i <= 100; i++) {
+                    if (F[Math.floor(10 * z)] > F[i]) {
                     a.push(F[i]);
                     } else {
-                    a.push(F[z]);
+                    a.push(F[Math.floor(10 * z)]);
                     }
                 }
                 return a;
             }
 
             function qwerty(F, y) {
-                const array = F.filter((i) => i[y] !== 0);
-                const membership_values = array.map((j) => j[y]);
+                const array = F.filter((i) => i[Math.floor(y * 10)] !== 0);
+                const membership_values = array.map((j) => j[Math.floor(y * 10)]);
                 const c = Math.min(...membership_values);
                 for (const i of array) {
-                    if (c === i[y]) {
+                    if (c === i[Math.floor(y * 10)]) {
                     return i;
+                    }
+                }
+            }
+
+            function qwerty1(F, y) {
+                const array = F.filter(i => i[Math.floor(y * 10)] !== 0);
+                const membership_values = array.map(j => j[Math.floor(y * 10)]);
+                const c = Math.max(...membership_values);
+                for (const i of array) {
+                    if (c === i[Math.floor(y * 10)]) {
+                        return i;
                     }
                 }
             }
@@ -371,7 +414,6 @@
             var q4 = [A_2_mf, B_2_mf, C_2_mf];
             var q5 = [A_1_mf, B_1_mf, C_1_mf, D_1_mf];
             var q6 = [A_2_mf, B_2_mf, C_2_mf];
-
 
             var x1 = 5;
             var x2 = 5;
@@ -402,7 +444,7 @@
                 let s = 0;
                 let p = 0;
                 let result = 0;
-                for (let i = 0; i <= 10; i++) {
+                for (let i = 0; i <= 100; i++) {
                     s += total[i];
                     p += total[i] * x[i];
                 }
@@ -448,31 +490,30 @@
                 let s = 0;
                 let p = 0;
                 let result = 0;
-                for (let i = 0; i <= 10; i++) {
+                for (let i = 0; i <= 100; i++) {
                     s += total[i];
                     p += total[i] * x[i];
                 }
                 total = clear_zero(total);
                 result_all = p / s;
-                result_all = result_all.toFixed(2);
                 var equationDiv = document.querySelector(".math-equation");
 
                     var equation = "\\(\\frac{";
                     for (var i = 0; i <= total.length - 1; i++) {
-                        equation += "\(" + total[i] + " \\cdot " + i + "\)" ;
+                        equation += "\(" + total[i].toFixed(2) + " \\cdot " + i + "\)" ;
                         if (i < total.length-1) {
                             equation += " + ";
                         }
                     }
                     equation += "}{";
                     for (var i = 0; i <= total.length-1; i++) {
-                        equation += total[i];
+                        equation += total[i].toFixed(2);
                         if (i < total.length-1) {
                             equation += " + ";
                         }
                     }
             
-                    equation += "} = " + result_all +"\\)";
+                    equation += "} = " + result_all.toFixed(2) +"\\)";
                     equationDiv.innerHTML = equation;
                     MathJax.typesetPromise();
                 }
@@ -608,11 +649,11 @@
                 }
             }
             
-            const initialData_1 = [[qwerty(q1, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q1, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 0.5]], "rgb(1, 0, 0)", false]];
-            const initialData_2 = [[qwerty(q2, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q2, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 0.5]], "rgb(1, 0, 0)", false]];
-            const initialData_3 = [[qwerty(q3, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q3, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 0.5]], "rgb(1, 0, 0)", false]];
-            const initialData_4 = [[qwerty(q4, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q4, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 0.5]], "rgb(1, 0, 0)", false]];
-            const initialData_5 = [[qwerty(q5, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q5, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_1 = [[qwerty(q1, 6), "rgb(117, 194, 246)", false], [normal(qwerty(q1, 6), 6), "rgb(117, 194, 246)", true], [[[6, 0], [6, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_2 = [[qwerty(q2, 4), "rgb(241, 201, 59)", false], [normal(qwerty(q2, 4), 4), "rgba(241, 201, 59, 0)", true], [[[4, 0], [4, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_3 = [[qwerty(q3, 0), "rgb(243, 21, 89)", false], [normal(qwerty(q3, 0), 0), "rgb(243, 21, 89)", true], [[[0, 0], [0, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_4 = [[qwerty(q4, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q4, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_5 = [[qwerty(q5, 4), "rgb(241, 201, 59)", false], [normal(qwerty(q5, 4), 4), "rgba(241, 201, 59, 0)", true], [[[4, 0], [4, 1]], "rgb(1, 0, 0)", false]];
             const initialData_6 = [[qwerty(q6, 5), "rgb(241, 201, 59)", false], [normal(qwerty(q6, 5), 5), "rgba(241, 201, 59, 0)", true], [[[5, 0], [5, 1]], "rgb(1, 0, 0)", false]];
 
             const dragChart_1 = new DragChartComponent("dragChart_1");
@@ -629,6 +670,122 @@
             dragChart_5.createDragChart(initialData_5);
             dragChart_6.createDragChart(initialData_6);
 
+            function type_input(input_id){
+                var old_value = document.getElementById(input_id).value;
+                var new_value;
+                if (input_id == "inputNumber1"){
+                    if (old_value == 0) {
+                        new_value = 0;
+                    } else if (old_value == 1) {
+                        new_value = 2.4;
+                    } else if (old_value == 2) {
+                        new_value = 4;
+                    } else if (old_value == 3) {
+                        new_value = 5.6;
+                    } else if (old_value == 4) {
+                        new_value = 4.9;
+                    } else if (old_value == 5) {
+                        new_value = 6;
+                    } else if (old_value == 6) {
+                        new_value = 6.4;
+                    } else if (old_value == 7) {
+                        new_value = 8;
+                    } else if (old_value > 7) {
+                        new_value = 10;
+                    } else {
+                        new_value = 0;
+                    }
+                } else if (input_id == "inputNumber2"){
+                    if (old_value == 0){
+                        new_value = 0;
+                    }else if (old_value == 1){
+                        new_value = 4;
+                    }else if (old_value == 2){
+                        new_value = 6;
+                    }else if (old_value == 3){
+                        new_value = 8;
+                    }else if (old_value > 3){
+                        new_value = 10;
+                    }
+                } else if (input_id == "inputNumber3"){
+                    if (old_value == 0) {
+                        new_value = 0;
+                    } else if (old_value == 1) {
+                        new_value = 2.4;
+                    } else if (old_value == 2) {
+                        new_value = 4;
+                    } else if (old_value == 3) {
+                        new_value = 5.2;
+                    } else if (old_value == 4) {
+                        new_value = 4.8;
+                    } else if (old_value == 5) {
+                        new_value = 6;
+                    } else if (old_value == 6) {
+                        new_value = 6.4;
+                    } else if (old_value == 7) {
+                        new_value = 8;
+                    } else if (old_value > 7) {
+                        new_value = 10;
+                    } else {
+                        new_value = 0;
+                    }
+
+                } else if (input_id == "inputNumber4"){
+                    if (old_value == 0){
+                        new_value = 0;
+                    }else if (old_value == 1){
+                        new_value = 5;
+                    }else if (old_value == 2){
+                        new_value = 10;
+                    }
+                } else if (input_id == "inputNumber5"){
+                    if (old_value == 0){
+                        new_value = 0;
+                    }else if (old_value > 0 && old_value <= 5){
+                        new_value = 2.4;
+                    }else if (old_value > 5 && old_value <= 10){
+                        new_value = 4;
+                    }else if (old_value > 10 && old_value <= 15){
+                        new_value = 5;
+                    }else if (old_value > 15 && old_value <= 20){
+                        new_value = 4.8;
+                    }else if (old_value > 20 && old_value <= 25){
+                        new_value = 6;
+                    }else if (old_value > 25 && old_value <= 30){
+                        new_value = 6.8;
+                    }else if (old_value > 30 && old_value <= 35){
+                        new_value = 8;
+                    }else if (old_value > 35){
+                        new_value = 10;
+                    }else{
+                        new_value = 0;
+                    }
+                } else if (input_id == "inputNumber6"){
+                    if (old_value == 0) {
+                        new_value = 0;
+                    } else if (old_value == 1) {
+                        new_value = 3.4;
+                    } else if (old_value == 2) {
+                        new_value = 3.6;
+                    } else if (old_value == 3) {
+                        new_value = 5;
+                    } else if (old_value == 4) {
+                        new_value = 6;
+                    } else if (old_value == 5) {
+                        new_value = 6.8;
+                    } else if (old_value == 6) {
+                        new_value = 7.5;
+                    } else if (old_value == 7) {
+                        new_value = 8;
+                    } else if (old_value > 7) {
+                        new_value = 10;
+                    } else {
+                        new_value = 0;
+                    }
+                } 
+                return new_value;
+            }
+
             function max_graph(graph, q_length) {
                 if (q_length == 3) {
                     if (graph[0] == 1) {
@@ -641,9 +798,9 @@
                 }else{
                     if (graph[0] == 1) {
                         return ["rgb(243, 21, 89)", "Past"];
-                    } else if (graph[4] == 1) {
+                    } else if (graph[40] == 1) {
                         return ["rgb(241, 201, 59)", "O'rta"];
-                    } else if (graph[6] == 1) {
+                    } else if (graph[60] == 1) {
                         return ["rgb(117, 194, 246)", "Yaxshi"];
                     } else {
                         return ["rgb(80, 255, 0)", "Yuqori"];
@@ -659,79 +816,108 @@
                 timeoutId = setTimeout(() => {
                     const inputElement1 = document.getElementById(inputNumber);
                     const output = document.querySelectorAll(outputId);
-                    const value = parseFloat(inputElement1.value);
+                    const value = parseFloat(type_input(inputNumber));
                     const qw = qwerty(q, value);
+                    const qy = qwerty1(q, value);
                     const norm = normal(qw, value);
+                    const norm1 = normal(qy, value);
                     const color = max_graph(qw, parseInt(q.length))[0];
+                    const color1 = max_graph(qy, parseInt(q.length))[0];
 
                     for (const i of output) {
                         i.innerHTML = inputElement1.value;
                         i.style.color = color;
                     }
-                    
                     const norm_val_1 = document.getElementById(norm_val);
-                    norm_val_1.innerHTML = norm[value];
+                    norm_val_1.innerHTML = norm[value * 10].toFixed(2);
                     norm_val_1.style.color = color;
+
+                    const n_norm_val_1 = document.getElementById(n_norm_val);
+                    n_norm_val_1.innerHTML = norm1[value * 10].toFixed(2);
+                    n_norm_val_1.style.color = color1;
+                    if (norm[value * 10].toFixed(2) == 1) {
+                        n_norm_val_1.style.display = "none";
+                    } else {
+                        n_norm_val_1.style.display = "inline-block";
+                    }
 
                     const text_1 = document.getElementById(text);
                     text_1.innerHTML = max_graph(qw, parseInt(q.length))[1];
                     text_1.style.color = color;
                     
 
+                    const n_text_1 = document.getElementById(n_text);
+                    n_text_1.innerHTML = max_graph(qy, parseInt(q.length))[1];
+                    n_text_1.style.color = color1;
+                    if (norm[value * 10].toFixed(2) == 1) {
+                        n_text_1.style.display = "none";
+                    } else {
+                        n_text_1.style.display = "inline-block";
+                    }
+
+                    const hide_word_1 = document.getElementById(hide_word);
+                    if (norm[value * 10].toFixed(2) == 1) {
+                        hide_word_1.style.display = "none";
+                    } else {
+                        hide_word_1.style.display = "inline-block";
+                    }
+
                     const updatedData = [
-                                         [[[value, 0], [value, norm[value]]], "rgb(1, 0, 0)", false],
+                                         [[[value, 0], [value, norm[value * 10]]], "rgb(1, 0, 0)", false],
                                          [qw, color, false],
                                          [norm, "rgba(241, 201, 59, 0)", true],
 
-                                        ];
+                                         [[[value, 0], [value, norm1[value * 10]]], "rgb(255, 0, 0)", false],
+                                         [qy, color1, false],
+                                         [norm1, "rgba(241, 201, 59, 0)", true],
+                                        ]
                     chart.updateChartData(updatedData);
                 }, 300);
             }
-            x_val = [5, 5, 5, 5, 5, 5, 5, 5, 5];
+            x_val = [5, 5, 5, 5, 5, 5];
 
             document.getElementById("inputNumber1").addEventListener("input", function(){
-                x_val[0] = parseFloat(document.getElementById("inputNumber7").value);
+                x_val[0] = parseFloat(type_input("inputNumber1"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 updateAll(x_val);
                 chart_result.update();
                 update("inputNumber1",".output_1", "norm_val_1", "text_1", "n_norm_val_1", "n_text_1", "hide_word_1", "range_value_1", q1, dragChart_1);
             });
             document.getElementById("inputNumber2").addEventListener("input", function(){
-                x_val[1] = parseFloat(document.getElementById("inputNumber2").value);
+                x_val[1] = parseFloat(type_input("inputNumber2"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 updateAll(x_val);
                 chart_result.update();
                 update("inputNumber2",".output_2", "norm_val_2", "text_2", "n_norm_val_2", "n_text_2", "hide_word_2", "range_value_2", q2, dragChart_2);
             });
             document.getElementById("inputNumber3").addEventListener("input", function(){
-                x_val[2] = parseFloat(document.getElementById("inputNumber3").value);
+                x_val[2] = parseFloat(type_input("inputNumber3"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 updateAll(x_val);
                 chart_result.update();
                 update("inputNumber3",".output_3", "norm_val_3", "text_3", "n_norm_val_3", "n_text_3", "hide_word_3", "range_value_3", q3, dragChart_3);
             });
             document.getElementById("inputNumber4").addEventListener("input", function(){
-                x_val[3] = parseFloat(document.getElementById("inputNumber4").value);
+                x_val[3] = parseFloat(type_input("inputNumber4"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 updateAll(x_val);
                 chart_result.update();
                 update("inputNumber4",".output_4", "norm_val_4", "text_4", "n_norm_val_4", "n_text_4", "hide_word_4", "range_value_4", q4, dragChart_4);
             });
             document.getElementById("inputNumber5").addEventListener("input", function(){
-                x_val[4] = parseFloat(document.getElementById("inputNumber5").value);
+                x_val[4] = parseFloat(type_input("inputNumber5"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 updateAll(x_val);
                 chart_result.update();
                 update("inputNumber5",".output_5", "norm_val_5", "text_5", "n_norm_val_5", "n_text_5", "hide_word_5", "range_value_5", q5, dragChart_5);
             });
             document.getElementById("inputNumber6").addEventListener("input", function(){
-                x_val[5] = parseFloat(document.getElementById("inputNumber6").value);
+                x_val[5] = parseFloat(type_input("inputNumber6"));
                 chart_result.data.datasets[0].data = calc(x_val).total;
                 chart_result.update();
                 updateAll(x_val);
                 update("inputNumber6",".output_6", "norm_val_6", "text_6", "n_norm_val_6", "n_text_6", "hide_word_6", "range_value_6", q6, dragChart_6);
             });
-
             const ctx = document.getElementById("chart_result").getContext('2d');
             const chart_result = new Chart(ctx, {
             type: "line",
