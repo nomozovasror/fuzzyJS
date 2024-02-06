@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>fuzzy</title>
+        <!-- //bootstrap css -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        >
+        <!-- //bootstrap js -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <!-- //chart js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
+        <!-- //jquery -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <!-- MathJax -->
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+        <style>
+            .result {
+                font-size: 1.2rem;
+                padding: 0;
+                border-radius: 4px;
+                font-weight: 600;
+                color: rgb(241, 201, 59);
+            }
+            #math-equation2 {
+                display: inline-block !important;
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #math-equation{
+                display: inline-block !important;
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5rem;
+                padding: 30px 10px;
+            }
+            .chart_res {
+                display: inline-block !important;
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2rem;
+                padding: 0;
+                border-radius: 4px;
+                font-weight: 600;
+            }
+            .math-scrool{
+                width: 100%;
+                overflow-x: scroll;
+                padding: 10px 30px;
+            }
+        </style>
+    <body>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>1. Hududdagi jinoyatchiliklar soni</h3>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div style="height: 0.5rem;"></div>
+                    <canvas id="myChart_1" width="400"></canvas>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-flex justify-content-center m-0 p-0">
+                        <p class="p-0 m-0" style="font-size: 1.2rem;">
+                            Natija: x1: 
+                            <span class="output_1 result">50</span> da 
+                            <span id="norm_val_1" class="result">1</span> bilan 
+                            <span id="text_1" class="result">O'zgarmadi</span> 
+                            <span id="n_norm_val_1" class="result"></span> 
+                            <span id="hide_word_1" style="display: none;">bilan</span> 
+                            <span id="n_text_1" class="result"></span> ga tegishli
+                        </p>
+                    </div>
+                    
+                    <canvas id="dragChart_1" width="400"></canvas>
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <span id="range_value_1" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                        </div>
+                        <div class="col-11 d-flex align-items-center">
+                            <input type="range" id="inputNumber1" min="0" max="100" step="1" style="width: 100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>2. Murojatlar bilan ishlaganligi</h3>
+                </div>
+                <div class="col-lg-6 col-sm-12 mt-5">
+                    <canvas id="myChart_2" width="400"></canvas>
+                </div>
+                <div class="col-lg-6 col-sm-12 mt-4">
+                    <div class="d-flex justify-content-center m-0 p-0">
+                        <p class="p-0 m-0" style="font-size: 1.2rem;">
+                            Natija: x2: 
+                            <span class="output_2 result">50</span> da 
+                            <span id="norm_val_2" class="result">1</span> bilan 
+                            <span id="text_2" class="result">O'rtacha</span> 
+                            <span id="n_norm_val_2" class="result"></span> 
+                            <span id="hide_word_2" style="display: none;">bilan</span> 
+                            <span id="n_text_2" class="result"></span> ga tegishli
+                        </p>
+                    </div>
+                    <canvas id="dragChart_2" width="400"></canvas>
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <span id="range_value_2" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                        </div>
+                        <div class="col-11 d-flex align-items-center">
+                            <input type="range" id="inputNumber2" min="0" max="100" step="1" style="width: 100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3>3. Hodimning ishonchliligi</h3>
+                </div>
+                <div class="col-lg-6 col-sm-12 mt-4">
+                    <canvas id="myChart_3" width="400"></canvas>
+                </div>
+                <div class="col-lg-6 col-sm-12 mt-3">
+                    <div class="d-flex justify-content-center m-0 p-0">
+                        <p class="p-0 m-0" style="font-size: 1.2rem;">
+                            Natija: x3: 
+                            <span class="output_3 result">50</span> da 
+                            <span id="norm_val_3" class="result">1</span> bilan 
+                            <span id="text_3" class="result">O'rtacha</span> 
+                            <span id="n_norm_val_3" class="result"></span> 
+                            <span id="hide_word_3" style="display: none;">bilan</span> 
+                            <span id="n_text_3" class="result"></span> ga tegishli
+                        </p>
+                    </div>
+                    <canvas id="dragChart_3" width="400"></canvas>
+                    <div class="row">
+                        <div class="col-1 d-flex align-items-center">
+                            <span id="range_value_3" style="font-weight: 700; font-size: 1.2rem;">5</span>
+                        </div>
+                        <div class="col-11 d-flex align-items-center">
+                            <input type="range" id="inputNumber3" min="0" max="100" step="1" style="width: 100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="col-12">
+                    <canvas id="chart_result" width="400"></canvas>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-4 text-center">
+                  <h4 id="result"></h4>
+                </div>
+          
+                <div class="box">
+                  <div id="math-equation1">
+                    \begin{equation} \mu_{\varepsilon}=\mu_1 \cup \mu_2 \cup \mu_3 \cup
+                    \mu_4 \cup \mu_5 \cup \mu_6 \cup \mu_7 \end{equation}
+                  </div>
+                  <div class="row d-flex justify-content-center align-items-center">
+                    <div id="math-equation2" style="display: inline-block;">
+                      \begin{equation} \omega_0=\frac{\int_{\Omega} \omega
+                      \mu_{\varepsilon}(\omega) d \omega}{\int_{\Omega}
+                      \mu_{\varepsilon}(\omega) d \omega} =  \end{equation}
+                    </div>
+                    <div class="chart_res pb-1"></div>
+                  </div>
+                </div>
+                <div id="math-equation" class="math-equation math-scrool"></div>
+              </div>
+        </div>
+        <script>
+            const x = [];
+            for (let i = 0; i <= 100; i++) {
+            x.push(i);
+            }
+            function trapezoidalMF(a, b, c, d) {
+            const array = [];
+            if (a === b) {
+                for (const i of x) {
+                if (i >= b && i <= c) {
+                    array.push(1);
+                } else if (i > c && i <= d) {
+                    array.push((d - i) / (d - c));
+                } else {
+                    array.push(0);
+                }
+                }
+            } else if (c === d) {
+                for (const i of x) {
+                if (i >= b && i <= c) {
+                    array.push(1);
+                } else if (i >= a && i < b) {
+                    array.push((i - a) / (b - a));
+                } else {
+                    array.push(0);
+                }
+                }
+            } else {
+                for (const i of x) {
+                if (i <= b && i >= a) {
+                    array.push((i - b) / (b - a));
+                } else if (i > b && i <= c) {
+                    array.push(1);
+                } else if (i > c && i <= d) {
+                    array.push((d - i) / (d - c));
+                } else {
+                    array.push(0);
+                }
+                }
+            }
+            return array;
+            }
+
+            function triangularMF(a, b, c) {
+            const array = [];
+            if (a === b) {
+                for (const i of x) {
+                if (i >= b && i <= c) {
+                    array.push((c - i) / (c - b));
+                } else {
+                    array.push(0);
+                }
+                }
+            } else if (b === c) {
+                for (const i of x) {
+                if (i >= a && i <= b) {
+                    array.push((i - a) / (b - a));
+                } else {
+                    array.push(0);
+                }
+                }
+            } else {
+                for (const i of x) {
+                if (i >= a && i <= b) {
+                    array.push((i - a) / (b - a));
+                } else if (i > b && i <= c) {
+                    array.push((c - i) / (c - b));
+                } else {
+                    array.push(0);
+                }
+                }
+            }
+            return array;
+            }
+
+            function normal(F, z) {
+                const a = [];
+                for (let i = 0; i <= 100; i++) {
+                    if (F[Math.floor(z)] > F[i]) {
+                    a.push(F[i]);
+                    } else {
+                    a.push(F[Math.floor(z)]);
+                    }
+                }
+                return a;
+            }
+
+            function qwerty(F, y) {
+                const array = F.filter((i) => i[Math.floor(y)] !== 0);
+                const membership_values = array.map((j) => j[Math.floor(y)]);
+                const c = Math.min(...membership_values);
+                for (const i of array) {
+                    if (c === i[Math.floor(y)]) {
+                    return i;
+                    }
+                }
+            }
+
+            function qwerty1(F, y) {
+                const array = F.filter(i => i[Math.floor(y)] !== 0);
+                const membership_values = array.map(j => j[Math.floor(y)]);
+                const c = Math.max(...membership_values);
+                for (const i of array) {
+                    if (c === i[Math.floor(y)]) {
+                        return i;
+                    }
+                }
+            }
+
+            var A_1_mf = trapezoidalMF(0, 0, 20, 40);
+            var B_1_mf = triangularMF(20, 40, 60);
+            var C_1_mf = triangularMF(40, 60, 8);
+            var D_1_mf = trapezoidalMF(60, 80, 100, 100);
+
+            var A_2_mf = trapezoidalMF(0, 0, 10, 50);
+            var B_2_mf = triangularMF(30, 50, 70);
+            var C_2_mf = trapezoidalMF(50, 70, 100, 100);
+            
+            
+            var q1 = [A_2_mf, B_2_mf, C_2_mf];
+            var q2 = [A_2_mf, B_2_mf, C_2_mf];
+            var q3 = [A_2_mf, B_2_mf, C_2_mf];
+
+            var x1 = 50;
+            var x2 = 50;
+            var x3 = 50;
+
+            function calc(xs){
+                var p1 = normal(qwerty(q1, xs[0]), xs[0]);
+                var p2 = normal(qwerty(q2, xs[1]), xs[1]);
+                var p3 = normal(qwerty(q3, xs[2]), xs[2]);
+                total = [];
+                var fuzzy_set = [p1, p2, p3];
+                var total = fuzzy_set[0].map((_, i) =>
+                    Math.max(
+                    p1[i],
+                    p2[i],
+                    p3[i]
+                    )
+                );
+                let s = 0;
+                let p = 0;
+                let result = 0;
+                for (let i = 0; i <= 100; i++) {
+                    s += total[i];
+                    p += total[i] * x[i];
+                }
+                result = p / s;
+                var equationSpan = document.querySelector(".chart_res");
+                equationSpan.innerHTML = result.toFixed(2);
+                return {
+                    total: total,
+                    result: result,
+                };
+            }
+            function clear_zero(fuzz){
+                var clear_total = []
+                for (let i = 0; i < fuzz.length; i++) {
+                    if (fuzz[i] != 0) {
+                        clear_total.push(fuzz[i]);
+                    }
+                }
+                return clear_total;
+            }
+
+            function updateAll(xs) {
+                var p1 = normal(qwerty(q1, xs[0]), xs[0]);
+                var p2 = normal(qwerty(q2, xs[1]), xs[1]);
+                var p3 = normal(qwerty(q3, xs[2]), xs[2]);
+                total = [];
+                var fuzzy_set = [p1, p2, p3];
+                var total = fuzzy_set[0].map((_, i) =>
+                    Math.max(
+                    p1[i],
+                    p2[i],
+                    p3[i]
+                    )
+                );
+
+                
+                let s = 0;
+                let p = 0;
+                let result = 0;
+                for (let i = 0; i <= 100; i++) {
+                    s += total[i];
+                    p += total[i] * x[i];
+                }
+                total = clear_zero(total);
+                result_all = p / s;
+                var equationDiv = document.querySelector(".math-equation");
+
+                    var equation = "\\(\\frac{";
+                    for (var i = 0; i <= total.length - 1; i++) {
+                        equation += "\(" + total[i].toFixed(2) + " \\cdot " + i + "\)" ;
+                        if (i < total.length-1) {
+                            equation += " + ";
+                        }
+                    }
+                    equation += "}{";
+                    for (var i = 0; i <= total.length-1; i++) {
+                        equation += total[i].toFixed(2);
+                        if (i < total.length-1) {
+                            equation += " + ";
+                        }
+                    }
+            
+                    equation += "} = " + result_all.toFixed(2) +"\\)";
+                    equationDiv.innerHTML = equation;
+                    MathJax.typesetPromise();
+                }
+
+            class ChartComponent {
+                constructor(canvasId) {
+                    this.canvasId = canvasId;
+                }
+                createLineChart(data) {
+                    const ctx = document.getElementById(this.canvasId).getContext('2d');
+                    var all_data = [];
+                    for (let i = 0; i < data.length; i++) {
+                        all_data.push({
+                            label: data[i][0],
+                            data: data[i][1],
+                            borderColor: data[i][2],
+                            borderWidth: 3,
+                            pointRadius: 0,
+                        });
+                    }
+
+                    const LineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: x,
+                            datasets: all_data
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            function createData(q) {
+                const data = [];
+                const labels_3 = ["Yomon", "O'rtacha", "Yaxshi"];
+                const labels_4 = ["Past", "O'rta", "Yaxshi", "Yuqori"]
+                const color_3 = ["rgb(243, 21, 89)", "rgb(241, 201, 59)", "rgb(0, 255, 0)"]
+                const color_4 = ["rgb(243, 21, 89)", "rgb(241, 201, 59)", "rgb(117, 194, 246)","rgb(0, 255, 0)"]
+                if (q.length == 3) {
+                    for (let i = 0; i < q.length; i++) {
+                        data.push([labels_3[i], q[i], color_3[i]]);
+                    }
+                } else {
+                    for (let i = 0; i < q.length; i++) {
+                        data.push([labels_4[i], q[i], color_4[i]]);
+                    }
+                }
+                return data;
+            }
+            
+            data_1 = createData(q1);
+            data_2 = createData(q2);
+            data_3 = createData(q3);
+
+    
+            const chart_1 = new ChartComponent("myChart_1");
+            const chart_2 = new ChartComponent("myChart_2");
+            const chart_3 = new ChartComponent("myChart_3");
+    
+            chart_1.createLineChart(data_1);
+            chart_2.createLineChart(data_2);
+            chart_3.createLineChart(data_3);
+
+            class DragChartComponent {
+                constructor(canvasId) {
+                    this.canvasId = canvasId;
+                    this.chart = null; 
+                }
+                createDragChart(data) {
+                    const ctx = document.getElementById(this.canvasId).getContext('2d');
+
+                    var all_data = [];
+                    for (let i = 0; i < data.length; i++) {
+                        all_data.push({
+                            data: data[i][0],
+                            borderColor: data[i][1],
+                            fill: data[i][2],
+                            borderWidth: 3,
+                            pointRadius: 0,
+                        });
+                    }
+                    const chartConfig = {
+                        type: 'line',
+                        data: {
+                            labels: x,
+                            datasets: all_data,
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        },
+                    };
+
+                    this.chart = new Chart(ctx, chartConfig);
+                }
+
+                updateChartData(newData) {
+                    if (this.chart) {
+                        var all_data = [];
+                        for (let i = 0; i < newData.length; i++) {
+                            all_data.push({
+                                data: newData[i][0],
+                                borderColor: newData[i][1],
+                                fill: newData[i][2],
+                                borderWidth: 3,
+                                pointRadius: 0,
+                            });
+                        }
+                        this.chart.data.datasets = all_data;
+                        this.chart.update();
+                    }
+                }
+            }
+            
+            const initialData_1 = [[qwerty(q1, 50), "rgb(241, 201, 59)", false], [normal(qwerty(q1, 50), 50), "rgba(241, 201, 59, 0)", true], [[[50, 0], [50, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_2 = [[qwerty(q2, 50), "rgb(241, 201, 59)", false], [normal(qwerty(q2, 50), 50), "rgba(241, 201, 59, 0)", true], [[[50, 0], [50, 1]], "rgb(1, 0, 0)", false]];
+            const initialData_3 = [[qwerty(q3, 50), "rgb(241, 201, 59)", false], [normal(qwerty(q3, 50), 50), "rgba(241, 201, 59, 0)", true], [[[50, 0], [50, 1]], "rgb(1, 0, 0)", false]];
+        
+
+            const dragChart_1 = new DragChartComponent("dragChart_1");
+            const dragChart_2 = new DragChartComponent("dragChart_2");
+            const dragChart_3 = new DragChartComponent("dragChart_3");
+
+
+
+            dragChart_1.createDragChart(initialData_1);
+            dragChart_2.createDragChart(initialData_2);
+            dragChart_3.createDragChart(initialData_3);
+
+
+                function max_graph(graph, q_length) {
+                    if (q_length == 3) {
+                        if (graph[0] == 1) {
+                            return ["rgb(243, 21, 89)", "Yomon"];
+                        } else if (graph[(graph.length - 1) / 2] == 1) {
+                            return ["rgb(241, 201, 59)", "O'rtacha"];
+                        } else {
+                            return ["rgb(80, 255, 0)", "Yaxshi"];
+                        }
+                    }else{
+                        if (graph[0] == 1) {
+                            return ["rgb(243, 21, 89)", "Past"];
+                        } else if (graph[40] == 1) {
+                            return ["rgb(241, 201, 59)", "O'rta"];
+                        } else if (graph[60] == 1) {
+                            return ["rgb(117, 194, 246)", "Yaxshi"];
+                        } else {
+                            return ["rgb(80, 255, 0)", "Yuqori"];
+                        }
+                    }
+                }
+                function max_graph_2(graph, q_length) {
+                    if (q_length == 3) {
+                        if (graph[0] == 1) {
+                            return ["rgb(243, 21, 89)", "Oshib ketti"];
+                        } else if (graph[(graph.length - 1) / 2] == 1) {
+                            return ["rgb(241, 201, 59)", "O'zgarmadi"];
+                        } else {
+                            return ["rgb(80, 255, 0)", "Kamaydi"];
+                        }
+                    }else{
+                        if (graph[0] == 1) {
+                            return ["rgb(243, 21, 89)", "Past"];
+                        } else if (graph[40] == 1) {
+                            return ["rgb(241, 201, 59)", "O'rta"];
+                        } else if (graph[60] == 1) {
+                            return ["rgb(117, 194, 246)", "Yaxshi"];
+                        } else {
+                            return ["rgb(80, 255, 0)", "Yuqori"];
+                        }
+                    }
+                }
+            
+            let timeoutId; 
+            function update(inputNumber, outputId, norm_val, text, n_norm_val, n_text, hide_word, range_value_1, q, chart){
+                const range_value = document.getElementById(range_value_1);
+                range_value.innerHTML = document.getElementById(inputNumber).value;
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    const inputElement1 = document.getElementById(inputNumber);
+                    const output = document.querySelectorAll(outputId);
+                    const value = parseFloat(inputElement1.value);
+                    const qw = qwerty(q, value);
+                    const qy = qwerty1(q, value);
+                    const norm = normal(qw, value);
+                    const norm1 = normal(qy, value);
+                    const color = max_graph(qw, parseInt(q.length))[0];
+                    const color1 = max_graph(qy, parseInt(q.length))[0];
+
+                    for (const i of output) {
+                        i.innerHTML = inputElement1.value;
+                        i.style.color = color;
+                    }
+                    const norm_val_1 = document.getElementById(norm_val);
+                    norm_val_1.innerHTML = norm[value];
+                    norm_val_1.style.color = color;
+
+                    const n_norm_val_1 = document.getElementById(n_norm_val);
+                    n_norm_val_1.innerHTML = norm1[value];
+                    n_norm_val_1.style.color = color1;
+                    if (norm[value] == 1) {
+                        n_norm_val_1.style.display = "none";
+                    } else {
+                        n_norm_val_1.style.display = "inline-block";
+                    }
+
+                    const text_1 = document.getElementById(text);
+                    text_1.innerHTML = max_graph(qw, parseInt(q.length))[1];
+                    text_1.style.color = color;
+                    
+
+                    const n_text_1 = document.getElementById(n_text);
+                    n_text_1.innerHTML = max_graph(qy, parseInt(q.length))[1];
+                    n_text_1.style.color = color1;
+                    if (norm[value] == 1) {
+                        n_text_1.style.display = "none";
+                    } else {
+                        n_text_1.style.display = "inline-block";
+                    }
+
+                    const hide_word_1 = document.getElementById(hide_word);
+                    if (norm[value] == 1) {
+                        hide_word_1.style.display = "none";
+                    } else {
+                        hide_word_1.style.display = "inline-block";
+                    }
+
+                    const updatedData = [
+                                         [[[value, 0], [value, norm[value]]], "rgb(1, 0, 0)", false],
+                                         [qw, color, false],
+                                         [norm, "rgba(241, 201, 59, 0)", true],
+
+                                         [[[value, 0], [value, norm1[value]]], "rgb(255, 0, 0)", false],
+                                         [qy, color1, false],
+                                         [norm1, "rgba(241, 201, 59, 0)", true],
+                                        ]
+                    chart.updateChartData(updatedData);
+                }, 300);
+            }
+            function update2(inputNumber, outputId, norm_val, text, n_norm_val, n_text, hide_word, range_value_1, q, chart){
+                const range_value = document.getElementById(range_value_1);
+                range_value.innerHTML = document.getElementById(inputNumber).value;
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    const inputElement1 = document.getElementById(inputNumber);
+                    const output = document.querySelectorAll(outputId);
+                    const value = parseFloat(inputElement1.value);
+                    const qw = qwerty(q, value);
+                    const qy = qwerty1(q, value);
+                    const norm = normal(qw, value);
+                    const norm1 = normal(qy, value);
+                    const color = max_graph_2(qw, parseInt(q.length))[0];
+                    const color1 = max_graph_2(qy, parseInt(q.length))[0];
+
+                    for (const i of output) {
+                        i.innerHTML = inputElement1.value;
+                        i.style.color = color;
+                    }
+                    const norm_val_1 = document.getElementById(norm_val);
+                    norm_val_1.innerHTML = norm[value];
+                    norm_val_1.style.color = color;
+
+                    const n_norm_val_1 = document.getElementById(n_norm_val);
+                    n_norm_val_1.innerHTML = norm1[value];
+                    n_norm_val_1.style.color = color1;
+                    if (norm[value] == 1) {
+                        n_norm_val_1.style.display = "none";
+                    } else {
+                        n_norm_val_1.style.display = "inline-block";
+                    }
+
+                    const text_1 = document.getElementById(text);
+                    text_1.innerHTML = max_graph_2(qw, parseInt(q.length))[1];
+                    text_1.style.color = color;
+                    
+
+                    const n_text_1 = document.getElementById(n_text);
+                    n_text_1.innerHTML = max_graph_2(qy, parseInt(q.length))[1];
+                    n_text_1.style.color = color1;
+                    if (norm[value] == 1) {
+                        n_text_1.style.display = "none";
+                    } else {
+                        n_text_1.style.display = "inline-block";
+                    }
+
+                    const hide_word_1 = document.getElementById(hide_word);
+                    if (norm[value] == 1) {
+                        hide_word_1.style.display = "none";
+                    } else {
+                        hide_word_1.style.display = "inline-block";
+                    }
+
+                    const updatedData = [
+                                         [[[value, 0], [value, norm[value]]], "rgb(1, 0, 0)", false],
+                                         [qw, color, false],
+                                         [norm, "rgba(241, 201, 59, 0)", true],
+
+                                         [[[value, 0], [value, norm1[value]]], "rgb(255, 0, 0)", false],
+                                         [qy, color1, false],
+                                         [norm1, "rgba(241, 201, 59, 0)", true],
+                                        ]
+                    chart.updateChartData(updatedData);
+                }, 300);
+            }
+            x_val = [50, 50, 50,];
+
+            document.getElementById("inputNumber1").addEventListener("input", function(){
+                x_val[0] = parseFloat(document.getElementById("inputNumber1").value);
+                chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
+                chart_result.update();
+                update2("inputNumber1",".output_1", "norm_val_1", "text_1", "n_norm_val_1", "n_text_1", "hide_word_1", "range_value_1", q1, dragChart_1);
+            });
+            document.getElementById("inputNumber2").addEventListener("input", function(){
+                x_val[1] = parseFloat(document.getElementById("inputNumber2").value);
+                chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
+                chart_result.update();
+                update("inputNumber2",".output_2", "norm_val_2", "text_2", "n_norm_val_2", "n_text_2", "hide_word_2", "range_value_2", q2, dragChart_2);
+            });
+            document.getElementById("inputNumber3").addEventListener("input", function(){
+                x_val[2] = parseFloat(document.getElementById("inputNumber3").value);
+                chart_result.data.datasets[0].data = calc(x_val).total;
+                updateAll(x_val);
+                chart_result.update();
+                update("inputNumber3",".output_3", "norm_val_3", "text_3", "n_norm_val_3", "n_text_3", "hide_word_3", "range_value_3", q3, dragChart_3);
+            });
+
+            const ctx = document.getElementById("chart_result").getContext('2d');
+            const chart_result = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: x,
+                datasets: [
+                {
+                    label: "Umumiy",
+                    data: calc(x_val).total,
+                    borderColor: "rgb(80, 255, 0)",
+                    borderWidth: 3,
+                    fill: true,
+                    pointRadius: 0,
+                },
+                ],
+            },
+            options: {
+                scales: {
+                x: {
+                    title: {
+                    display: true,
+                    text: "x",
+                    },
+                },
+                y: {
+                    title: {
+                    display: true,
+                    text: "Umumiy",
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 1,
+                },
+                },
+            },
+            });
+        </script>
+        
+    </body>
+</html>
