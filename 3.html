@@ -127,7 +127,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <h3>3. Hodimning ishonchliligi</h3>
+                    <h3>3. Hodimga fuqorolarning bergan bahosi</h3>
                 </div>
                 <div class="col-lg-6 col-sm-12 mt-4">
                     <canvas id="myChart_3" width="400"></canvas>
@@ -297,7 +297,7 @@
             var C_1_mf = triangularMF(40, 60, 8);
             var D_1_mf = trapezoidalMF(60, 80, 100, 100);
 
-            var A_2_mf = trapezoidalMF(0, 0, 10, 50);
+            var A_2_mf = trapezoidalMF(0, 0, 30, 50);
             var B_2_mf = triangularMF(30, 50, 70);
             var C_2_mf = trapezoidalMF(50, 70, 100, 100);
             
@@ -444,8 +444,25 @@
                 }
                 return data;
             }
+            function createData2(q) {
+                const data = [];
+                const labels_3 = ["Oshdi", "O'zgarmadi", "Kamaydi"];
+                const labels_4 = ["Past", "O'rta", "Yaxshi", "Yuqori"]
+                const color_3 = ["rgb(243, 21, 89)", "rgb(241, 201, 59)", "rgb(0, 255, 0)"]
+                const color_4 = ["rgb(243, 21, 89)", "rgb(241, 201, 59)", "rgb(117, 194, 246)","rgb(0, 255, 0)"]
+                if (q.length == 3) {
+                    for (let i = 0; i < q.length; i++) {
+                        data.push([labels_3[i], q[i], color_3[i]]);
+                    }
+                } else {
+                    for (let i = 0; i < q.length; i++) {
+                        data.push([labels_4[i], q[i], color_4[i]]);
+                    }
+                }
+                return data;
+            }
             
-            data_1 = createData(q1);
+            data_1 = createData2(q1);
             data_2 = createData(q2);
             data_3 = createData(q3);
 
@@ -557,7 +574,7 @@
                 function max_graph_2(graph, q_length) {
                     if (q_length == 3) {
                         if (graph[0] == 1) {
-                            return ["rgb(243, 21, 89)", "Oshib ketti"];
+                            return ["rgb(243, 21, 89)", "Oshdi"];
                         } else if (graph[(graph.length - 1) / 2] == 1) {
                             return ["rgb(241, 201, 59)", "O'zgarmadi"];
                         } else {
